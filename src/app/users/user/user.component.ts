@@ -14,6 +14,12 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.user = {id: this.route.snapshot.params['id'], name: this.route.snapshot.params['name']};
+
+    // Params are observables
+    this.route.params
+      .subscribe((params) => {
+        this.user = {id: params['id'], name: params['name']};
+      });
   }
 
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ServersService } from '../servers.service';
+import {ServersService} from '../servers.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -8,11 +9,12 @@ import { ServersService } from '../servers.service';
   styleUrls: ['./edit-server.component.css']
 })
 export class EditServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number, name: string, status: string };
   serverName = '';
   serverStatus = '';
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.server = this.serversService.getServer(1);
