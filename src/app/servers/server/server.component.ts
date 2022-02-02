@@ -15,12 +15,12 @@ export class ServerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.server = {id: +params['id'], name: params['name'], status: 'Online'};
+    this.route.params.subscribe(() => {
+      this.server = this.serversService.getServer(+this.route.snapshot.params['id']);
     });
   }
 
   onEdit() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 }
